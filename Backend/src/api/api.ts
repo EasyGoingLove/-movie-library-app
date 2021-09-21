@@ -1,25 +1,17 @@
-import fetch from "node-fetch";
+import reciveData from './reciveData';
+import filterData from './filterData';
 
-import axios from 'axios';
 
-const  api = async() => {
-	const url = 'https://api.tvmaze.com/search/';
-    const s = "girls"
-		try {
-            axios.get(url + `shows?q=${s}`)
-                .then(function (response) {
-                  console.log(response.data);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
-                .then(function () {
-                   console.log("Succsesful call !");
-                });
-		}
-		catch (error){
-			console.log(error);
-		}
-        
-}
+const api = async() =>{
+ 
+    const data = await reciveData();
+    console.log(data,'sd');
+    
+    const reformedData = new filterData(data);
+
+    reformedData.extractData();
+   
+
+};
+
 export default api;
