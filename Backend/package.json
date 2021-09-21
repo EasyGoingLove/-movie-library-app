@@ -5,14 +5,16 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "client":"cd ../frontend && yarn start",
+    "client": "cd ../frontend && yarn start",
     "server": "nodemon src/app.ts",
-    "dev":"concurrently \"yarn run server\" \"yarn run client\""
+    "dev": "concurrently \"yarn run server\" \"yarn run client\""
   },
   "dependencies": {
+    "axios": "^0.21.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^6.0.6",
+    "node-fetch": "^3.0.0",
     "typescript": "^4.4.3",
     "yarn": "^1.22.11"
   },

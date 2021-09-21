@@ -7,23 +7,25 @@ import {
 } from 'react-router-dom';
 import './App.css';
 
-import Header from './Header/Header';
+import Home from './pages/Home/Home';
+
+import Header from './components/Header/Header';
 
 const App = () => {
   return (
     <Router>
       <Header/> 
-      {/* <Switch>
-          <Route path="/about">
+      <Switch>
+          {/* <Route path="/about">
             <About />
           </Route>
           <Route path="/users">
             <Users />
-          </Route>
+          </Route> */}
           <Route path="/">
             <Home />
           </Route>
-        </Switch> */}
+        </Switch>
 
     </Router>
   );
