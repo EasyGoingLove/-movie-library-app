@@ -1,0 +1,10 @@
+.nav-container{ 
+   height: 100%;
+   width: 140px;
+   background-color: #cddbe9;
+   position: fixed;
+   z-index: 100;
+}
+.nav-btns{
+    margin-bottom: 400px;
+}

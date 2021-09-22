@@ -11,12 +11,13 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 
-import  { Redirect } from 'react-router-dom'
+import  { Redirect } from 'react-router-dom';
 
 import service from '../../services/service';
 import { useState } from 'react';
 
 import SearchedMovies from '../SearchedMovies/SearchedMovies';
+import NavMenu from '../NavMenu/NavMenu';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -70,8 +71,13 @@ export default function Header() {
        [summarary,setSummarary] = useState<any>(),
        [image,setImage] = useState<any>(),
        [genres,setGenre] = useState<any>(),
-       [diplay,setDiplay] = useState<any>(false);
-       
+       [diplay,setDiplay] = useState<any>(false),
+       [navbarOpen, setNavbarOpen] = useState<any>(false);
+
+
+  const activateNav = ()=>{
+    setNavbarOpen(true);
+  };
 
   const Sumbit = (e:any) => {
     if (e.key === 'Enter') {
@@ -100,6 +106,7 @@ export default function Header() {
       <AppBar position="static">
         <Toolbar>
           <IconButton
+            onClick={activateNav}
             size="large"
             edge="start"
             color="inherit"
@@ -108,6 +115,7 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
+
           <Typography id="h6-restyle"
             variant="h6"
             noWrap
@@ -128,6 +136,7 @@ export default function Header() {
         </Toolbar>
       </AppBar>
     </Box>
+    {navbarOpen===true?<NavMenu/>:''}
     {redirect}
     <div className="moviesDisplay">
       {diplay===true ? 
