@@ -135,8 +135,8 @@ export default function Header() {
               return <SearchedMovies 
               key={`id:${i}`}
               title={title[i]}
-              timeDuration={timeDuration[i]}
-              releaseData={releaseData[i]}
+              timeDuration={!timeDuration[i]? NaN :timeDuration[i]}
+              releaseData={!releaseData[i]? 'No Info' :releaseData[i].substring(0, 4)}
               summarary={summarary[i]}
               image={image[i]}
               genres={genres[i]}

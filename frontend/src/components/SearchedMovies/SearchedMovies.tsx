@@ -26,7 +26,8 @@ const SearchedMovies = (props: SearchedMProps) => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {props.title}
+            <h2>{props.title} ({props.releaseData})</h2> 
+            <h6>{props.genres} <strong>| {props.timeDuration}</strong></h6> 
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {props.summarary}
