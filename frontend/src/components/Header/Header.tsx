@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
 
 import  { Redirect } from 'react-router-dom';
 
@@ -72,11 +73,18 @@ export default function Header() {
        [image,setImage] = useState<any>(),
        [genres,setGenre] = useState<any>(),
        [diplay,setDiplay] = useState<any>(false),
-       [navbarOpen, setNavbarOpen] = useState<any>(false);
+       [navbarOpen, setNavbarOpen] = useState<any>(false),
+       [icon, setIcon] = useState<any>(<MenuIcon />);
 
 
   const activateNav = ()=>{
-    setNavbarOpen(true);
+    if(navbarOpen){
+      setNavbarOpen(false);
+      setIcon(<MenuIcon />)
+    }else{
+      setNavbarOpen(true);
+      setIcon(<CloseIcon/>)
+    }
   };
 
   const Sumbit = (e:any) => {
@@ -113,7 +121,7 @@ export default function Header() {
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            {icon}
           </IconButton>
 
           <Typography id="h6-restyle"

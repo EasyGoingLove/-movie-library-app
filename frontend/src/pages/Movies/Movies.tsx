@@ -12,8 +12,11 @@ const Div = styled('div')(({ theme }) => ({
 const Movies = () => {
     return(
         <div>
-          <Div>{"Hope you liked our collection of moveis 😊."}</Div>;
-          <Stack sx={{ width: '100%', color: 'grey.500' }} spacing={2}>
+          <Div>{"Hope you like our collection of moveis 😊."}</Div>
+          <Stack sx={{ width: '100%', color: 'grey.500' }} spacing={5}>
+          <LinearProgress color="secondary" />
+          <LinearProgress color="success" />
+          <LinearProgress color="inherit" />
           <LinearProgress color="secondary" />
           <LinearProgress color="success" />
           <LinearProgress color="inherit" />
