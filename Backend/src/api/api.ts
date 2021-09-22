@@ -9,7 +9,7 @@ const api = async(searchedShow:string) =>{
     const reformedData = await new filterData(resolvedData);
     
     const finishedResults  = await reformedData.extractData();
-    //  
+    
     
     return finishedResults;
 };

@@ -16,6 +16,8 @@ import  { Redirect } from 'react-router-dom'
 import service from '../../services/service';
 import { useState } from 'react';
 
+import SearchedMovies from '../SearchedMovies/SearchedMovies';
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -61,14 +63,29 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Header() {
 
-  const[redirect,setRedirect] = useState<any>();
+  const[redirect,setRedirect] = useState<any>(),
+       [title,setTitle] = useState<any>(),
+       [timeDuration,setTimeDuration] = useState<any>(),
+       [releaseData,setReleaseData] = useState<any>(),
+       [summarary,setSummarary] = useState<any>(),
+       [image,setImage] = useState<any>(),
+       [genres,setGenre] = useState<any>(),
+       [diplay,setDiplay] = useState<any>(false);
+       
 
   const Sumbit = (e:any) => {
-    
     if (e.key === 'Enter') {
       service.searchedMovies(e.target.value)
       .then(response => {
         console.log(response.data);
+
+        setTitle(response.data[0]);
+        setTimeDuration(response.data[1]);
+        setReleaseData(response.data[2]);
+        setSummarary(response.data[3]);
+        setImage(response.data[4]);
+        setGenre(response.data[5]);
+        setDiplay(true);
       })
       .catch(e => {
         console.log(e);
@@ -78,6 +95,7 @@ export default function Header() {
   };
 
   return (
+    <div>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
@@ -109,7 +127,24 @@ export default function Header() {
           </Search>
         </Toolbar>
       </AppBar>
-      {redirect}
     </Box>
+    {redirect}
+    <div className="moviesDisplay">
+      {diplay===true ? 
+        title.map( (element:any,i:number) => {
+              return <SearchedMovies 
+              key={`id:${i}`}
+              title={title[i]}
+              timeDuration={timeDuration[i]}
+              releaseData={releaseData[i]}
+              summarary={summarary[i]}
+              image={image[i]}
+              genres={genres[i]}
+              />
+         })
+        :''}
+      </div>
+    </div>
+    
   );
 }
