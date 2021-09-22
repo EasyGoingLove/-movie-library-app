@@ -35,5 +35,7 @@ export default class ShowData {
       }
       this.genres.push(allData[i].show.genres);
     }
+    const arrayOfData = [ this.title,this.timeDuration,this.releaseData,this.summarary,this.image,this.genres]
+    return arrayOfData;
   }
 }

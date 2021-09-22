@@ -5,15 +5,19 @@ const getAll = () => {
   return http.get("/tutorials");
 };
 
-const get = (id: any) => {
-  return http.get(`/tutorials/${id}`);
+const searchedMovies = (name: string) => {
+  return http.get('/searchedMovies',{
+    params: {
+      searchedName: name
+    }
+  });
 };
 
 
 
 const Service = {
     getAll,
-    get,
+    searchedMovies,
     // create,
     // update,
     // remove,

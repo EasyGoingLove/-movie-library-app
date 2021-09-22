@@ -33,6 +33,7 @@ app.use(express.json());
 //   })
 
 app.use('/',router);
+app.use('/searchedMovies',router);
 
 app.listen(PORT, () =>
       console.log(`Server running on http://localhost:${PORT}`)

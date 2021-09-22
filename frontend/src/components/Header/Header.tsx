@@ -11,6 +11,12 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 
+import  { Redirect } from 'react-router-dom'
+
+import service from '../../services/service';
+import { useState } from 'react';
+
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -54,6 +60,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
+
+  const[redirect,setRedirect] = useState<any>();
+
+  const Sumbit = (e:any) => {
+    
+    if (e.key === 'Enter') {
+      service.searchedMovies(e.target.value)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+    setRedirect(<Redirect to='/searchedMovies'/>);
+    }
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -75,7 +98,7 @@ export default function Header() {
           >
             My Movies Collection
           </Typography>
-          <Search>
+          <Search onKeyDown={Sumbit}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -86,6 +109,7 @@ export default function Header() {
           </Search>
         </Toolbar>
       </AppBar>
+      {redirect}
     </Box>
   );
 }
