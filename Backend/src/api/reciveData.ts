@@ -1,23 +1,17 @@
 import axios from 'axios';
 
-const  api = async() => {
-	const url : string= 'https://api.tvmaze.com/search/';
-    const s : string = "girls"
-		try {
-            axios.get(url + `shows?q=${s}`)
-                .then(function (response) {
-                  return response.data;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
-                .then(function () {
-                   console.log("Succsesful call !");
-                });
-		}
-		catch (error){
-			console.log(error);
-		}
-        
-}
-export default api;
+export default class Api {
+  searchedShow:string;
+  constructor(searchedShow:string){
+    this.searchedShow = searchedShow;
+  }
+    async getShowData() {
+      const url : string = 'https://api.tvmaze.com/search/';
+        try {
+           return await axios.get(url + `shows?q=${this.searchedShow}`); 
+        }
+        catch (error){
+          console.log(error);
+        }
+   }
+ }

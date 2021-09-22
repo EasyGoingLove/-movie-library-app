@@ -5,10 +5,11 @@ const router = express.Router();
 
 router.get('/', (req,res)=>{
 
-    console.log("mm");
+    console.log("pages before call log");
 
-    api();
-
+     api("girls");
+     
+     
 
     res.send("sadasda");
     

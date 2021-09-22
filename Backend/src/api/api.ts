@@ -2,16 +2,13 @@ import reciveData from './reciveData';
 import filterData from './filterData';
 
 
-const api = async() =>{
+const api = async(searchedShow:string) =>{
  
-    const data = await reciveData();
-    console.log(data,'sd');
-    
-    const reformedData = new filterData(data);
+    const data =  await new reciveData(searchedShow);
+    const resolvedData = await data.getShowData().then(function(result:any) { return result.data;}) 
+    const reformedData = await new filterData(resolvedData);
 
-    reformedData.extractData();
-   
-
+    return reformedData.extractData();
 };
 
 export default api;
