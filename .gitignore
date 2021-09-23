@@ -2,7 +2,6 @@
 node_modules/
 package-lock.json
 
-
 # Ignore Logs
 logs
 *.log
@@ -11,9 +10,10 @@ logs
 /dist
 
 # The file containing environment variables 
-.env
+nodemon.json
 
 # Ignore IDE specific files
+
 .idea/
 .vscode/
 *.sw*

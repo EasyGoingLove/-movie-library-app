@@ -7,9 +7,8 @@ const Home = () => {
 
 
     return(
-        <div className="home-body">
+        <div className="home-body"> 
             <Hero/>
-
         </div>
     );
     

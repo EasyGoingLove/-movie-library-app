@@ -20,7 +20,7 @@ const Hero = () => {
     <div className="hero-container">
       <FeaturedMovie />
       <SimpleImageSlider
-        width={300}
+        width={400}
         height={500}
         images={images}
         showNavs={false}
