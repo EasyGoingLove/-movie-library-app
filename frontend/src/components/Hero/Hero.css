@@ -3,9 +3,9 @@
     flex-wrap: wrap;
     gap: 5vh;
     margin-top: 12vh;
-    margin-left: 12vh;
+    margin-left: 14vh;
     margin-right: 12vh;
-    background-color: rgb(215, 222, 228);
+    background-color: rgb(245, 246, 248);
 }
 .flex-gap > div {
     margin: 60px;

@@ -1,7 +1,7 @@
 import {IMOvie} from '../types/movie';
 import { model, Schema } from "mongoose"
 
-const todoSchema: Schema = new Schema(
+const movieSchema: Schema = new Schema(
   {
     title: {
       type: String,
@@ -46,4 +46,4 @@ const todoSchema: Schema = new Schema(
   { timestamps: true }
 )
 
-export default model<IMOvie>("Movie", todoSchema);
+export default model<IMOvie>("Movie", movieSchema);

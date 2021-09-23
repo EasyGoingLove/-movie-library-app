@@ -44,7 +44,7 @@ const NavMenu = () => {
           className="nav-btns"
           variant="contained"
           onClick={() => {
-            redirect("searchedMovies");
+            redirect("myFavorites");
           }}
         >
           My Movies

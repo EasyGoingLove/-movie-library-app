@@ -9,6 +9,7 @@ import './App.css';
 import Home from './pages/Home/Home';
 import Header from './components/Header/Header';
 import Movies from './pages/Movies/Movies';
+import MyFavorites from './pages/MyFavorites/MyFavorites';
 
 const App = () => {
 
@@ -17,9 +18,7 @@ const App = () => {
       <Header/> 
       <Switch>
           <Route path="/searchedMovies" render={(props:any) => <Movies {...props}/>}/>
-          {/* <Route path="/users">
-            <Users />
-          </Route> */}
+          <Route path="/myFavorites" component={MyFavorites}/>
           <Route path="/" component={Home}/>
         </Switch>
 

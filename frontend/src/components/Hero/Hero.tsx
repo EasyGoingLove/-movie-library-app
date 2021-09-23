@@ -3,7 +3,8 @@ import React from "react";
 import "./Hero.css";
 import SimpleImageSlider from "react-simple-image-slider";
 
-import FeaturedMovie from "../FeaturedMovie/FeaturedMovie";
+import FeaturedMovie from "./FeaturedMovie/FeaturedMovie";
+import Steps from './Steps/Steps';
 
 const Hero = () => {
   const images = [
@@ -28,6 +29,7 @@ const Hero = () => {
         slideDuration={2}
         useGPURender={true}
       />
+      <Steps/>
     </div>
   );
 };
