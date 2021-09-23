@@ -1,0 +1,7 @@
+.hero-container{
+    display: inline-flex;
+    margin-top: 12vh;
+    margin-left: 12vh;
+    margin-right: 12vh;
+    border: 1px red solid;
+}
