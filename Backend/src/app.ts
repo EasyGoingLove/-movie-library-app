@@ -20,6 +20,7 @@ mongoConnect();
 
 app.use('/',router);
 app.use('/searchedMovies',router);
+app.use('/savingFavMovie',router);
 
 app.listen(PORT, () =>
       console.log(`Server running on http://localhost:${PORT}`)

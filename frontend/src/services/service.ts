@@ -1,5 +1,5 @@
 import http from "../services/http";
-
+import IMovieData from '../types/movie'; 
 
 const getAll = () => {
   return http.get("/tutorials");
@@ -13,12 +13,16 @@ const searchedMovies = (name: string) => {
   });
 };
 
+const saveToFav = (data: IMovieData) => {
+  return http.put('/savingFavMovie',data);
+};
+
 
 
 const Service = {
     getAll,
     searchedMovies,
-    // create,
+    saveToFav,
     // update,
     // remove,
     // removeAll,

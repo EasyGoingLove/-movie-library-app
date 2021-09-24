@@ -6,7 +6,6 @@ import { styled } from '@mui/material/styles';
 import MoviesList from '../../components/MovieList/MovieList';
 
 
-
 const Div = styled('div')(({ theme }) => ({
   ...theme.typography.button,
   backgroundColor: theme.palette.background.paper,

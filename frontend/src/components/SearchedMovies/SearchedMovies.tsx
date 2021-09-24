@@ -3,7 +3,9 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
+import { CardActionArea, CardActions } from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import IconButton from "@mui/material/IconButton";
 
 type SearchedMProps = {
   title: string;
@@ -12,6 +14,7 @@ type SearchedMProps = {
   summarary: string;
   image: string;
   genres: string;
+  saveFav:() => void;
 };
 
 const SearchedMovies = (props: SearchedMProps) => {
@@ -26,14 +29,24 @@ const SearchedMovies = (props: SearchedMProps) => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            <h2>{props.title} ({props.releaseData})</h2> 
-            <h6>{props.genres} <strong>| {props.timeDuration}</strong></h6> 
+            <h2>
+              {props.title} ({props.releaseData})
+            </h2>
+            <h6>
+              {props.genres} <strong>| {props.timeDuration}</strong>
+            </h6>
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {props.summarary}
           </Typography>
         </CardContent>
       </CardActionArea>
+      <CardActions onClick={props.saveFav}>
+        <IconButton aria-label="add to favorites" size="large">
+          <FavoriteIcon />
+          <h6> Save to favorites!</h6>
+        </IconButton>
+      </CardActions>
     </Card>
   );
 };

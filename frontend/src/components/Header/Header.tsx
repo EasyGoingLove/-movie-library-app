@@ -16,7 +16,7 @@ import { Redirect } from "react-router-dom";
 
 import { useState } from "react";
 
-import NavMenu from "../NavMenu/NavMenu";
+import NavMenu from "./NavMenu/NavMenu";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",

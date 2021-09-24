@@ -35,12 +35,12 @@ const movieSchema: Schema = new Schema(
     
     stars: {
       type: String,
-      required: true,
+      required: false,
     },
 
     rewiew: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   { timestamps: true }

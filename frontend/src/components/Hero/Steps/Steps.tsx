@@ -45,7 +45,7 @@ export default function VerticalLinearStepper() {
         maxWidth: 500,
         bgcolor: "#bbdefb",
         "&:hover": {
-          backgroundColor: "#e1bee7",
+          backgroundColor: "#e0f2f1",
           opacity: [0.9, 0.8, 0.7],
         },
       }}
