@@ -10,6 +10,7 @@ import Home from './pages/Home/Home';
 import Header from './components/Header/Header';
 import Movies from './pages/Movies/Movies';
 import MyFavorites from './pages/MyFavorites/MyFavorites';
+import ClickedMovie from './pages/ClickedMovie/ClickedMovie';
 
 const App = () => {
 
@@ -18,7 +19,8 @@ const App = () => {
       <Header/> 
       <Switch>
           <Route path="/searchedMovies" render={(props:any) => <Movies {...props}/>}/>
-          <Route path="/myFavorites" component={MyFavorites}/>
+          <Route path="/myFavorites"    component={MyFavorites}/>
+          <Route path="/clickedMovie/:movieName"   render={(props:any) => <ClickedMovie {...props}/>}/>
           <Route path="/" component={Home}/>
         </Switch>
 

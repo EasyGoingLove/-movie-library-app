@@ -39,7 +39,7 @@ const Home = () => {
         {favLogic === true
           ? loopArr.map((element: any, i: number) => {
               return (
-                <Card sx={{ maxWidth: 250 }} className="column-item">
+                <Card sx={{ maxWidth: 250 }} className="column-item" key={`id:${i}`}>
                   <CardActionArea>
                     <CardMedia
                       component="img"

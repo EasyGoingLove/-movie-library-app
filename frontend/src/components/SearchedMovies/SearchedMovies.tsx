@@ -17,12 +17,13 @@ type SearchedMProps = {
   genres: string;
   saveOrDelFav: () => void;
   boolFav: boolean;
+  openMovie:()=>void;
 };
 
 const SearchedMovies = (props: SearchedMProps) => {
   return (
     <Card sx={{ maxWidth: 500 }} className="column-item">
-      <CardActionArea>
+      <CardActionArea onClick={props.openMovie}>
         <CardMedia
           component="img"
           height="500"

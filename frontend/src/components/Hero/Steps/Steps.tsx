@@ -43,11 +43,7 @@ export default function VerticalLinearStepper() {
     <Box
       sx={{
         maxWidth: 500,
-        bgcolor: "#bbdefb",
-        "&:hover": {
-          backgroundColor: "#e0f2f1",
-          opacity: [0.9, 0.8, 0.7],
-        },
+        bgcolor: "#e1f5fe"
       }}
     >
       <Stepper activeStep={activeStep} orientation="vertical">

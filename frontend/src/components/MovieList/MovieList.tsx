@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Redirect } from "react-router";
 import service from "../../services/service";
 import PopUpMsg from "../PopUpMsg/PopUpMsg";
 import SearchedMovies from "../SearchedMovies/SearchedMovies";
@@ -54,6 +55,9 @@ const MovieList = (props: KayWordProps) => {
       <PopUpMsg onOff={false} popMsg="Saved successfully"/>
     ); }, 2000);
   };
+  const openMovie = (title:string) =>{
+    <Redirect to={`/clickedMovie/${title}`} />
+  };
 
   return (
     <div className="moviesDisplay">
@@ -62,6 +66,7 @@ const MovieList = (props: KayWordProps) => {
             return (
                 <SearchedMovies
                   key={`id:${i}`}
+                  openMovie={()=>{openMovie(title[i])}}
                   title={title[i]}
                   boolFav={true}
                   timeDuration={!timeDuration[i] ? NaN : timeDuration[i]}
