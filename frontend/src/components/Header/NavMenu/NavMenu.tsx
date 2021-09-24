@@ -40,8 +40,8 @@ const NavMenu = () => {
         >
           Search
         </Button>
-        <Button
-          className="nav-btns"
+        <Button  
+          id="nav-btns"
           variant="contained"
           onClick={() => {
             redirect("myFavorites");

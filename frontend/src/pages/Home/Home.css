@@ -14,6 +14,11 @@
     margin-left: 0%;
     flex: 100%; 
     display: block;
-    box-shadow: 0 0 0 1px rgb(145, 34, 34);
+    box-shadow: 0 0 0 0px rgb(145, 34, 34);
     align-self: center;
+    background-color: #01579b;
+}
+#noinf{
+  box-shadow: 0 0 0 0px rgb(145, 34, 34);
+  flex: 100%; 
 }

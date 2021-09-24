@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchedMovies from "../../components/SearchedMovies/SearchedMovies";
+import PopUpMsg from '../../components/PopUpMsg/PopUpMsg'
 
 import service from "../../services/service";
 
@@ -9,7 +10,8 @@ const MyFavorites = () => {
     const [favLogic,setFavLogic] = useState<boolean>(false),
     [data, setData] = useState<any>(),
     [loopArr,setLoopArr] = useState<any>(),
-    [del,setDel] = useState<string>();
+    [del,setDel] = useState<string>(),
+    [message,setMessage] = useState<any>();
 
   useEffect(()=>{setDel('onceOnLoad')},[])
   useEffect(() => {
@@ -37,6 +39,15 @@ const MyFavorites = () => {
       });
 
   };
+  const msg =()=>{
+    setMessage(
+      <PopUpMsg onOff={true} popMsg="Deleted successfully"/>
+    );
+    setTimeout(()=>{  
+      setMessage(
+      <PopUpMsg onOff={false} popMsg="Deleted successfully"/>
+    ); }, 2000);
+  };
 
   return (
   <div className="myfv-container">
@@ -54,12 +65,13 @@ const MyFavorites = () => {
                   genres={data[i].genres}
                   saveOrDelFav={()=>{
                     deleteFav(data[i]._id);
+                    msg();
                   }}
                 />
             );
           })
         : ""}
-
+    {message}
   </div>);
 };
 

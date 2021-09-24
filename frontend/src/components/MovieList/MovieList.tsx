@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import service from "../../services/service";
+import PopUpMsg from "../PopUpMsg/PopUpMsg";
 import SearchedMovies from "../SearchedMovies/SearchedMovies";
 
 type KayWordProps = {
@@ -14,7 +15,8 @@ const MovieList = (props: KayWordProps) => {
     [summarary, setSummarary] = useState<any>(),
     [image, setImage] = useState<any>(),
     [genres, setGenre] = useState<any>(),
-    [diplay, setDiplay] = useState<any>(false);
+    [diplay, setDiplay] = useState<any>(false),
+    [message,setMessage] = useState<any>();
 
   useEffect(() => {
     service
@@ -43,6 +45,15 @@ const MovieList = (props: KayWordProps) => {
         console.log(e);
       });
   };
+  const msg =()=>{
+    setMessage(
+      <PopUpMsg onOff={true} popMsg="Saved successfully"/>
+    );
+    setTimeout(()=>{  
+      setMessage(
+      <PopUpMsg onOff={false} popMsg="Saved successfully"/>
+    ); }, 2000);
+  };
 
   return (
     <div className="moviesDisplay">
@@ -68,11 +79,13 @@ const MovieList = (props: KayWordProps) => {
                     else{ releaseD = releaseData[i].substring(0, 4);}
                     
                     saveFav(title[i],timeD,releaseD,summarary[i],image[i],genres[i]);
+                    msg();
                   }}
                 />
             );
           })
         : ""}
+        {message}
     </div>
   );
 };

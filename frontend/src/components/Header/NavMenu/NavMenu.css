@@ -1,8 +1,11 @@
 .nav-container{ 
    height: auto;
    width: 140px;
-   background-color: #cddbe9;
+   background-color: #247dd6;
    position: absolute;
    z-index: 100;
    padding-top:2%;
+}
+#nav-btns{
+   
 }

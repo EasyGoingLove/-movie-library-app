@@ -33,7 +33,7 @@ const Home = () => {
       <Hero />
       
       <div className="favs-container">
-      <Typography gutterBottom variant="h5" component="div" align="center">
+      <Typography gutterBottom variant="h5" component="div" align="center" color="whitesmoke">
              <h2>Collection of your favorite movies.</h2>
       </Typography><br/>
         {favLogic === true
@@ -57,7 +57,7 @@ const Home = () => {
               );
             })
           : 
-            <Typography gutterBottom variant="h5" component="div" align="right">
+            <Typography gutterBottom variant="h5" component="div" align="left" id="noinf">
                <h5>Sorry it seems you don't have any liked movies yet.</h5>
              </Typography>
           }
