@@ -12,7 +12,6 @@ const searchedMovies = (name: string) => {
     }
   });
 };
-
 const saveToFav = (data: IMovieData) => {
   return http.put('/savingFavMovie',data);
 };
@@ -24,6 +23,10 @@ const removeFav = (itemId: any) => {
     }});
 };
 
+const check = (id: string) => {
+  return http.put('/checkIfinDb',{id:id});
+};
+
 
 
 const Service = {
@@ -31,7 +34,7 @@ const Service = {
     searchedMovies,
     saveToFav,
     removeFav,
-    // update,
+    check,
     // remove,
     // removeAll,
     // findByTitle,

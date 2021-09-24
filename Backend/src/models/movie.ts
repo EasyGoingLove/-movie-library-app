@@ -5,7 +5,7 @@ const movieSchema: Schema = new Schema(
   {
     title: {
       type: String,
-      required: true,
+      required: false,
     },
 
     timeDuration: {
@@ -30,7 +30,7 @@ const movieSchema: Schema = new Schema(
 
     genres: {
       type: String,
-      required: true,
+      required: false,
     },
     
     stars: {

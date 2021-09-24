@@ -23,6 +23,7 @@ app.use('/searchedMovies',router);
 app.use('/savingFavMovie',router);
 app.use('/allFavMovies',router);
 app.use('/deleteFav',router);
+app.use('/checkIfinDb',router);
 
 app.listen(PORT, () =>
       console.log(`Server running on http://localhost:${PORT}`)

@@ -9,7 +9,6 @@ type KayWordProps = {
 };
 
 const MovieList = (props: KayWordProps) => {
-
   const [title, setTitle] = useState<any>(),
     [timeDuration, setTimeDuration] = useState<any>(),
     [releaseData, setReleaseData] = useState<any>(),
@@ -17,7 +16,7 @@ const MovieList = (props: KayWordProps) => {
     [image, setImage] = useState<any>(),
     [genres, setGenre] = useState<any>(),
     [diplay, setDiplay] = useState<any>(false),
-    [message,setMessage] = useState<any>(),
+    [message, setMessage] = useState<any>(),
     [clMovie, setClMovie] = useState<any>();
 
   useEffect(() => {
@@ -37,24 +36,26 @@ const MovieList = (props: KayWordProps) => {
       });
   }, [props.word]);
 
-  const saveFav = (title:string,timeDuration:number,releaseData:string,summarary:string,image:string,genres:string)=>{
-       
+  const saveFav = (
+    title: string,
+    timeDuration: number,
+    releaseData: string,
+    summarary: string,
+    image: string,
+    genres: string
+  ) => {
     service
-      .saveToFav({title,timeDuration,releaseData,summarary,image,genres})
-      .then((response) => {
-      })
+      .saveToFav({ title, timeDuration, releaseData, summarary, image, genres })
+      .then((response) => {})
       .catch((e) => {
         console.log(e);
       });
   };
-  const msg =()=>{
-    setMessage(
-      <PopUpMsg onOff={true} popMsg="Saved successfully"/>
-    );
-    setTimeout(()=>{  
-      setMessage(
-      <PopUpMsg onOff={false} popMsg="Saved successfully"/>
-    ); }, 2000);
+  const msg = (corMsg: string) => {
+    setMessage(<PopUpMsg onOff={true} popMsg={corMsg} />);
+    setTimeout(() => {
+      setMessage(<PopUpMsg onOff={false} popMsg={corMsg} />);
+    }, 2000);
   };
   const openMovie = (
     title: string,
@@ -82,50 +83,113 @@ const MovieList = (props: KayWordProps) => {
       />
     );
   };
+  const check = (
+    title: string,
+    timeDuration: number,
+    releaseData: string,
+    summarary: string,
+    image: string,
+    genres: string,
+    id:number
+  ) => {
+    
+    service
+      .check(summarary)
+      .then((response) => {
+        console.log(response.data);
+        if(id===1){
+        let timeD = timeDuration;
+        if (!timeDuration) {
+          timeD = NaN;
+        }
+        let releaseD = "";
+        if (!releaseData) {
+          releaseD = "No Info";
+        } else {
+          releaseD = releaseData.substring(0, 4);
+        }
+        if (response.data==="Yes") {  
+          msg("Movie Already In Favorites");
+        } else {
+          saveFav(
+            title,
+            timeD,
+            releaseD,
+            summarary,
+            image,
+            genres
+          );
+          msg("Saved successfully");
+        }
+      }else{
+        let test = releaseData;
+        if(!releaseData){
+          test="No Info"
+        }else{
+          test.substring(0, 4)
+        }
+        openMovie(
+          title,
+          timeDuration,
+          test,
+          summarary,
+          image,
+          genres,
+          summarary//fix here
+        );
+      }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+   
+  };
 
   return (
     <div className="moviesDisplay">
       {diplay === true
         ? title.map((element: any, i: number) => {
             return (
-                <SearchedMovies
-                  key={`id:${i}`}
-                  openMovie={() => {
-                    openMovie(
-                      title[i],
-                      timeDuration[i],
-                      releaseData[i].substring(0, 4),
-                      summarary[i],
-                      image[i],
-                      genres[i],
-                      'comingFromSearch'
-                    );
-                  }}
-                  title={title[i]}
-                  boolFav={true}
-                  timeDuration={!timeDuration[i] ? NaN : timeDuration[i]}
-                  releaseData={
-                    !releaseData[i] ? "No Info" : releaseData[i].substring(0, 4)
-                  }
-                  summarary={summarary[i]}
-                  image={image[i]}
-                  genres={genres[i]}
-                  saveOrDelFav={()=>{
-                    let timeD = timeDuration[i];
-                    if(!timeDuration[i]){timeD=NaN;}
-                    let releaseD='';
-                    if(!releaseData[i]){releaseD = "No Info";}
-                    else{ releaseD = releaseData[i].substring(0, 4);}
-                    
-                    saveFav(title[i],timeD,releaseD,summarary[i],image[i],genres[i]);
-                    msg();
-                  }}
-                />
+              <SearchedMovies
+                key={`id:${i}`}
+                openMovie={() => {
+                  check( 
+                    title[i],
+                    timeDuration[i],
+                    releaseData[i],
+                    summarary[i],
+                    image[i],
+                    genres[i],
+                    0
+                  );
+                 
+                }}
+                title={title[i]}
+                boolFav={true}
+                timeDuration={!timeDuration[i] ? NaN : timeDuration[i]}
+                releaseData={
+                  !releaseData[i] ? "No Info" : releaseData[i].substring(0, 4)
+                }
+                summarary={summarary[i]}
+                image={image[i]}
+                genres={genres[i]}
+                saveOrDelFav={() => {
+                  check( 
+                    title[i],
+                    timeDuration[i],
+                    releaseData[i],
+                    summarary[i],
+                    image[i],
+                    genres[i],
+                    1
+                  );
+                }}
+              />
             );
           })
         : ""}
-        {message}
-        {clMovie}
+      {message}
+      {clMovie}
     </div>
   );
 };
