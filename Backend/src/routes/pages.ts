@@ -35,10 +35,12 @@ router.delete("/deleteFav", (req, res) => {
  
     Movie.findByIdAndRemove(req.body.source)
         .then((data) => {
-          console.log(`Deleting Fav movie ${data}`);    
+          console.log(`Deleting Fav movie ${data}`); 
+          res.send(req.body.source);
       })
       .catch((err) => {
           console.log(err);
+          res.send("Error couldn't delete");
       });
 
 

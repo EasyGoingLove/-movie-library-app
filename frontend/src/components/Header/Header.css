@@ -6,6 +6,7 @@
     flex-wrap: wrap;
     margin-top: 7%;
 }
+
 .moviesDisplay > div {
     flex: 50%; 
     box-shadow: 0 0 0 1px rgb(109, 96, 96);

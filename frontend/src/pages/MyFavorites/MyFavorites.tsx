@@ -8,9 +8,10 @@ import "./MyFavorites.css";
 const MyFavorites = () => {
     const [favLogic,setFavLogic] = useState<boolean>(false),
     [data, setData] = useState<any>(),
-    [loopArr,setLoopArr] = useState<any>();
+    [loopArr,setLoopArr] = useState<any>(),
+    [del,setDel] = useState<string>();
 
-
+  useEffect(()=>{setDel('onceOnLoad')},[])
   useEffect(() => {
     service
       .getAllFavs()
@@ -18,21 +19,18 @@ const MyFavorites = () => {
         let dataLenght = Object.keys(response.data).length;
         setLoopArr(new Array(dataLenght).fill(0));
         setData(response.data);
-        console.log(loopArr);
-        
-        setFavLogic(true);
-        
+        setFavLogic(true);       
       })
       .catch((e) => {
         console.log(e);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [del]);
 
   const deleteFav = (dataId:string) =>{
     service.removeFav(dataId)
     .then((response) => {
-        console.log(response.data); 
+        console.log(response.data);
+        setDel(response.data);
       })
       .catch((e) => {
         console.log(e);
@@ -50,9 +48,7 @@ const MyFavorites = () => {
                   title={data[i].title}
                   boolFav={false}
                   timeDuration={!data[i].timeDuration ? NaN : data[i].timeDuration}
-                  releaseData={
-                    !data[i].releaseData ? "No Info" : data[i].releaseData.substring(0, 4)
-                  }
+                  releaseData={data[i].releaseData}
                   summarary={data[i].summarary}
                   image={data[i].image}
                   genres={data[i].genres}
