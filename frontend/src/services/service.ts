@@ -17,12 +17,20 @@ const saveToFav = (data: IMovieData) => {
   return http.put('/savingFavMovie',data);
 };
 
+const removeFav = (itemId: any) => {
+  return http.delete(`/deleteFav`,{
+    data: {
+      source: itemId
+    }});
+};
+
 
 
 const Service = {
     getAllFavs,
     searchedMovies,
     saveToFav,
+    removeFav,
     // update,
     // remove,
     // removeAll,

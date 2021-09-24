@@ -60,11 +60,12 @@ const MovieList = (props: KayWordProps) => {
                   summarary={summarary[i]}
                   image={image[i]}
                   genres={genres[i]}
-                  saveFav={()=>{
+                  saveOrDelFav={()=>{
                     let timeD = timeDuration[i];
-                    if(!timeDuration[i]){timeD=NaN;}
+                    if(timeDuration[i]!=null){timeD=NaN;}
                     let releaseD = releaseData[i].substring(0, 4);
-                    if(!releaseData[i] ){releaseD = "No Info";};
+                    if(releaseData[i]!=null ){releaseD = "No Info";};
+                    
                     saveFav(title[i],timeD,releaseD,summarary[i],image[i],genres[i]);
                   }}
                 />

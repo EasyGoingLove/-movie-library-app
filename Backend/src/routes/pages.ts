@@ -1,6 +1,7 @@
 import express from "express";
 import api from "../api/api";
 import Movie from "../models/movie";
+import { Mongoose,Types } from 'mongoose';
 
 const router = express.Router();
 
@@ -28,5 +29,18 @@ router.get("/allFavMovies", (req, res) => {
       res.send(allDetails);
     }
   });
+});
+
+router.delete("/deleteFav", (req, res) => {
+ 
+    Movie.findByIdAndRemove(req.body.source)
+        .then((data) => {
+          console.log(`Deleting Fav movie ${data}`);    
+      })
+      .catch((err) => {
+          console.log(err);
+      });
+
+
 });
 export default router;

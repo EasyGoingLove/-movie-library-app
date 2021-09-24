@@ -15,7 +15,7 @@ type SearchedMProps = {
   summarary: string;
   image: string;
   genres: string;
-  saveFav: () => void;
+  saveOrDelFav: () => void;
   boolFav: boolean;
 };
 
@@ -44,17 +44,17 @@ const SearchedMovies = (props: SearchedMProps) => {
         </CardContent>
       </CardActionArea>
       {props.boolFav ? (
-        <CardActions onClick={props.saveFav}>
+        <CardActions onClick={props.saveOrDelFav}>
           <IconButton aria-label="add to favorites" size="large">
             <FavoriteIcon />
             <h6> Save to favorites!</h6>
           </IconButton>
         </CardActions>
       ) : (
-        <CardActions onClick={props.saveFav}>
+        <CardActions onClick={props.saveOrDelFav}>
           <IconButton aria-label="delete" size="large">
             <DeleteIcon fontSize="inherit" />
-            <h6> Save to favorites!</h6>
+            <h6> Delete from favorites!</h6>
           </IconButton>
         </CardActions>
       )}

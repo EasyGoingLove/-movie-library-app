@@ -84,7 +84,7 @@ export default function Header() {
             state: { enteredWord: e.target.value },
           }}
         />
-      );
+      ); 
     }
   };
 

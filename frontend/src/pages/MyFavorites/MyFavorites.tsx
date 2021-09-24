@@ -26,7 +26,19 @@ const MyFavorites = () => {
       .catch((e) => {
         console.log(e);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const deleteFav = (dataId:string) =>{
+    service.removeFav(dataId)
+    .then((response) => {
+        console.log(response.data); 
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+
+  };
 
   return (
   <div className="myfv-container">
@@ -36,7 +48,7 @@ const MyFavorites = () => {
                 <SearchedMovies
                   key={`id:${i}`}
                   title={data[i].title}
-                  boolFav={true}
+                  boolFav={false}
                   timeDuration={!data[i].timeDuration ? NaN : data[i].timeDuration}
                   releaseData={
                     !data[i].releaseData ? "No Info" : data[i].releaseData.substring(0, 4)
@@ -44,8 +56,8 @@ const MyFavorites = () => {
                   summarary={data[i].summarary}
                   image={data[i].image}
                   genres={data[i].genres}
-                  saveFav={()=>{
-                   
+                  saveOrDelFav={()=>{
+                    deleteFav(data[i]._id);
                   }}
                 />
             );
