@@ -17,7 +17,8 @@ const MovieList = (props: KayWordProps) => {
     [image, setImage] = useState<any>(),
     [genres, setGenre] = useState<any>(),
     [diplay, setDiplay] = useState<any>(false),
-    [message,setMessage] = useState<any>();
+    [message,setMessage] = useState<any>(),
+    [clMovie, setClMovie] = useState<any>();
 
   useEffect(() => {
     service
@@ -55,8 +56,31 @@ const MovieList = (props: KayWordProps) => {
       <PopUpMsg onOff={false} popMsg="Saved successfully"/>
     ); }, 2000);
   };
-  const openMovie = (title:string) =>{
-    <Redirect to={`/clickedMovie/${title}`} />
+  const openMovie = (
+    title: string,
+    timeDuration: number,
+    releaseData: string,
+    summarary: string,
+    image: string,
+    genres: string,
+    id: string
+  ) => {
+    setClMovie(
+      <Redirect
+        to={{
+          pathname: `/clickedMovie/${title}`,
+          state: {
+            title: title,
+            timeDuration: timeDuration,
+            releaseData: releaseData,
+            summarary: summarary,
+            image: image,
+            genres: genres,
+            id: id,
+          },
+        }}
+      />
+    );
   };
 
   return (
@@ -66,7 +90,17 @@ const MovieList = (props: KayWordProps) => {
             return (
                 <SearchedMovies
                   key={`id:${i}`}
-                  openMovie={()=>{openMovie(title[i])}}
+                  openMovie={() => {
+                    openMovie(
+                      title[i],
+                      timeDuration[i],
+                      releaseData[i].substring(0, 4),
+                      summarary[i],
+                      image[i],
+                      genres[i],
+                      'comingFromSearch'
+                    );
+                  }}
                   title={title[i]}
                   boolFav={true}
                   timeDuration={!timeDuration[i] ? NaN : timeDuration[i]}
@@ -91,6 +125,7 @@ const MovieList = (props: KayWordProps) => {
           })
         : ""}
         {message}
+        {clMovie}
     </div>
   );
 };

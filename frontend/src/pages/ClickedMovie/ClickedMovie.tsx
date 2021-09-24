@@ -16,7 +16,7 @@ const ClickedMovie = (props: any) => {
             src={props.location.state.image}
             alt={props.location.state.title}
           /></div>
-          <div>
+          <div className="info-container">
           <p>Genres: {props.location.state.genres} </p>
           <p>Summarary:<br/>{props.location.state.summarary} </p>
           <p>Release Data: {props.location.state.releaseData} </p>

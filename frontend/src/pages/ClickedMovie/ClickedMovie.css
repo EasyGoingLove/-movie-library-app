@@ -13,8 +13,8 @@ div.polaroid {
     font-size: 3vh;
   }
   .img{
-    width: 90%;
-    height: 95%;
+    width: 60vh;
+    height: 90vh;
   }
   .clicked-container{
     padding-left: 5%;
@@ -24,6 +24,9 @@ div.polaroid {
     display: inline-flex;
   }
   #subject{
-    width: 90%;
-    height: 60%;
+    width: 70vh;
+    height: 40vh;
+  }
+  .info-container{
+    padding-left: 15px;
   }

@@ -28,6 +28,10 @@ const Home = () => {
       });
   }, []);
 
+  const sorryMsg = ()=>{
+    alert("To view more details about the movie click \n from 'Searched Movies'\n or from 'My Movies'.")
+  };
+
   return (
     <div className="home-body">
       <Hero />
@@ -39,7 +43,7 @@ const Home = () => {
         {favLogic === true
           ? loopArr.map((element: any, i: number) => {
               return (
-                <Card sx={{ maxWidth: 250 }} className="column-item" key={`id:${i}`}>
+                <Card sx={{ maxWidth: 250 }} className="column-item" key={`id:${i}`} onClick={sorryMsg}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
