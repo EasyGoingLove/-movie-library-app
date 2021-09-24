@@ -7,6 +7,7 @@ type KayWordProps = {
 };
 
 const MovieList = (props: KayWordProps) => {
+
   const [title, setTitle] = useState<any>(),
     [timeDuration, setTimeDuration] = useState<any>(),
     [releaseData, setReleaseData] = useState<any>(),
@@ -51,6 +52,7 @@ const MovieList = (props: KayWordProps) => {
                 <SearchedMovies
                   key={`id:${i}`}
                   title={title[i]}
+                  boolFav={true}
                   timeDuration={!timeDuration[i] ? NaN : timeDuration[i]}
                   releaseData={
                     !releaseData[i] ? "No Info" : releaseData[i].substring(0, 4)

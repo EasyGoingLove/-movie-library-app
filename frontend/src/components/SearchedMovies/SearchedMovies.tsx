@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea, CardActions } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 type SearchedMProps = {
   title: string;
@@ -14,7 +15,8 @@ type SearchedMProps = {
   summarary: string;
   image: string;
   genres: string;
-  saveFav:() => void;
+  saveFav: () => void;
+  boolFav: boolean;
 };
 
 const SearchedMovies = (props: SearchedMProps) => {
@@ -41,12 +43,21 @@ const SearchedMovies = (props: SearchedMProps) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions onClick={props.saveFav}>
-        <IconButton aria-label="add to favorites" size="large">
-          <FavoriteIcon />
-          <h6> Save to favorites!</h6>
-        </IconButton>
-      </CardActions>
+      {props.boolFav ? (
+        <CardActions onClick={props.saveFav}>
+          <IconButton aria-label="add to favorites" size="large">
+            <FavoriteIcon />
+            <h6> Save to favorites!</h6>
+          </IconButton>
+        </CardActions>
+      ) : (
+        <CardActions onClick={props.saveFav}>
+          <IconButton aria-label="delete" size="large">
+            <DeleteIcon fontSize="inherit" />
+            <h6> Save to favorites!</h6>
+          </IconButton>
+        </CardActions>
+      )}
     </Card>
   );
 };

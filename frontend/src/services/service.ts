@@ -1,8 +1,8 @@
 import http from "../services/http";
 import IMovieData from '../types/movie'; 
 
-const getAll = () => {
-  return http.get("/tutorials");
+const getAllFavs = () => {
+  return http.get("/allFavMovies");
 };
 
 const searchedMovies = (name: string) => {
@@ -20,7 +20,7 @@ const saveToFav = (data: IMovieData) => {
 
 
 const Service = {
-    getAll,
+    getAllFavs,
     searchedMovies,
     saveToFav,
     // update,

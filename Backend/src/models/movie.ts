@@ -10,22 +10,22 @@ const movieSchema: Schema = new Schema(
 
     timeDuration: {
       type: Number,
-      required: true,
+      required: false,
     },
 
     releaseData: {
       type: String,
-      required: true,
+      required: false,
     },
 
     summarary: {
       type: String,
-      required: true,
+      required: false,
     },
 
     image: {
       type: String,
-      required: true,
+      required: false,
     },
 
     genres: {
