@@ -62,4 +62,25 @@ router.put("/checkIfinDb", (req, res) => {
     });
   }
 });
+
+router.put("/onChangeStar|Text", (req, res) => {
+     console.log(req.body);
+
+     let toUpdate;
+     if(req.body.devider===1){
+       toUpdate = {"stars": req.body.starOrtext}
+     }else{
+      toUpdate = {"rewiew": req.body.starOrtext};
+     }
+     
+
+     Movie.findByIdAndUpdate(req.body.id, toUpdate, {new: true}, function(err, result){
+      if(err){
+          res.send(err)
+      }
+      else{
+          res.send(result)
+      }
+  })
+});
 export default router;

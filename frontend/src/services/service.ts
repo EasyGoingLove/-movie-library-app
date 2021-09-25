@@ -27,6 +27,10 @@ const check = (id: string) => {
   return http.put('/checkIfinDb',{id:id});
 };
 
+const update = (id:string,starOrtext: number | string,devider:number) => {
+  return http.put('/onChangeStar|Text',{starOrtext:starOrtext,id:id,devider:devider});
+};
+
 
 
 const Service = {
@@ -35,9 +39,7 @@ const Service = {
     saveToFav,
     removeFav,
     check,
-    // remove,
-    // removeAll,
-    // findByTitle,
+    update,
   };
   
   export default Service;

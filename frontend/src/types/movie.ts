@@ -5,5 +5,7 @@ export default interface IMovieData {
     summarary: string;
     image: string;
     genres: string;
+    stars:number;
+    comments:string;
   }
 

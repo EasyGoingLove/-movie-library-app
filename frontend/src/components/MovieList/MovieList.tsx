@@ -44,8 +44,10 @@ const MovieList = (props: KayWordProps) => {
     image: string,
     genres: string
   ) => {
+    let stars:number = 0 ;
+    let comments:string = '';
     service
-      .saveToFav({ title, timeDuration, releaseData, summarary, image, genres })
+      .saveToFav({ title, timeDuration, releaseData, summarary, image, genres,stars,comments})
       .then((response) => {})
       .catch((e) => {
         console.log(e);
