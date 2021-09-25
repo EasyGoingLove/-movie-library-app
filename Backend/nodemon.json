@@ -1,0 +1,8 @@
+{
+    "env": {
+        "MONGO_USER": "adminDB",
+        "MONGO_PASSWORD": "E6w3B3ksU9npATH",
+        "MONGO_CLUSTER":"movieapptask.vno96",
+        "MONGO_DB": "myFirstDatabase"
+    }
+}
