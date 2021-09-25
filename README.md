@@ -17,8 +17,10 @@
    <li>Run <b>yarn dev</b> to start the server</li>
 </ol> 
 
+<h3>To change the atlas connection</h3>
+<li>Go to <b>Backend/nodemon.json </b> and change the credentials</li>
 
 <h2>Home Page Prewiew</h2>
 
 
-![alt text](https://i.ibb.co/KyD6LKd/localhost-3000.png)
+![homePageView](https://i.ibb.co/KyD6LKd/localhost-3000.png)
