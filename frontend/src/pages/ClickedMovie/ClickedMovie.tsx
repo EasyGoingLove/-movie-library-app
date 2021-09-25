@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 
 const ClickedMovie = (props: any) => {
-  
+ 
   const [text, setText] = useState<string>(""),
     [liked, setLiked] = useState<any>(),
     [starts, setStars] = useState<number>(0),
@@ -40,7 +40,14 @@ const ClickedMovie = (props: any) => {
       .catch((e) => {
         console.log(e);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+   service.getStarText(props.location.state.id)
+   .then((response) => {
+     setStars(Number(response.data.stars));
+     setText(response.data.rewiew)
+    })
+   .catch((e) => {
+     console.log(e);
+   });
   }, []);
 
   const saveToFav = () => {
@@ -75,7 +82,7 @@ const ClickedMovie = (props: any) => {
   const textValue = (e: any) => {
     if(onChlogic===1){
       service.update(props.location.state.id,e.target.value,0)
-      .then((response) => {console.log(response.data);})
+      .then((response) => {})
       .catch((e) => {
         console.log(e);
       });
@@ -85,12 +92,12 @@ const ClickedMovie = (props: any) => {
   const starValue = (e: any) => {
     if(onChlogic===1){
      service.update(props.location.state.id,e.target.value,1)
-     .then((response) => {console.log(response.data);})
+     .then((response) => {})
      .catch((e) => {
        console.log(e);
      });
     }
-    setStars(e.target.value);
+    setStars(Number(e.target.value));
   };
 
   return (
@@ -121,6 +128,7 @@ const ClickedMovie = (props: any) => {
             <Rating
               name="size-large"
               defaultValue={starts}
+              value={starts}
               size="large"
               onChange={starValue}
             />

@@ -137,7 +137,7 @@ const MovieList = (props: KayWordProps) => {
           summarary,
           image,
           genres,
-          summarary//fix here
+          summarary
         );
       }
       })

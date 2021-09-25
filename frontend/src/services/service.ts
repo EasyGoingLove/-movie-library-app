@@ -31,6 +31,10 @@ const update = (id:string,starOrtext: number | string,devider:number) => {
   return http.put('/onChangeStar|Text',{starOrtext:starOrtext,id:id,devider:devider});
 };
 
+const getStarText = (id:string) => {
+  return http.put('/getStarText',{id:id});
+};
+
 
 
 const Service = {
@@ -40,6 +44,7 @@ const Service = {
     removeFav,
     check,
     update,
+    getStarText
   };
   
   export default Service;

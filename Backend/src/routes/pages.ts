@@ -72,8 +72,6 @@ router.put("/onChangeStar|Text", (req, res) => {
      }else{
       toUpdate = {"rewiew": req.body.starOrtext};
      }
-     
-
      Movie.findByIdAndUpdate(req.body.id, toUpdate, {new: true}, function(err, result){
       if(err){
           res.send(err)
@@ -82,5 +80,18 @@ router.put("/onChangeStar|Text", (req, res) => {
           res.send(result)
       }
   })
+});
+
+router.put("/getStarText", (req, res) => {
+  console.log(req.body);
+
+  Movie.findById(req.body.id,function(err: any, result: any){
+   if(err){
+       res.send(err)
+   }
+   else{
+       res.send(result)
+   }
+})
 });
 export default router;
